@@ -1,5 +1,5 @@
-// Arreglo que contiene las intrucciones del juego 
-var instrucciones = ["utilize las flechas para mover las piezas", "iguala las piezas con el modelo para ganar"];
+// Arreglo que contiene las intrucciones del juego
+var instrucciones = ["Utilize las flechas para mover las piezas", "Iguala las piezas con el modelo para ganar"];
 // Arreglo para ir guardando los movimientos que se vayan realizando
 var movimientos = [];
 
@@ -11,23 +11,27 @@ var grilla = [
     [7, 8, 9]
 ];
 
-/* Estas dos variables son para guardar la posición de la pieza vacía. 
+/* Estas dos variables son para guardar la posición de la pieza vacía.
 Esta posición comienza siendo la [2, 2]*/
 var filaVacia = 2;
 var columnaVacia = 2;
 
-/* Esta función deberá recorrer el arreglo de instrucciones pasado por parámetro. 
-Cada elemento de este arreglo deberá ser mostrado en la lista con id 'lista-instrucciones'. 
+/* Esta función deberá recorrer el arreglo de instrucciones pasado por parámetro.
+Cada elemento de este arreglo deberá ser mostrado en la lista con id 'lista-instrucciones'.
 Para eso deberás usar la función ya implementada mostrarInstruccionEnLista().
 Podés ver su implementación en la ultima parte de este codigo. */
 function mostrarInstrucciones(instrucciones) {
-    //COMPLETAR
+  for (var i = 0; i < instrucciones.length; i++) {
+    var instruccion = instrucciones[i];
+    var idLista = "lista-instrucciones";
+    mostrarInstruccionEnLista(instruccion, idLista);
+  }
 }
 
 /* COMPLETAR: Crear función que agregue la última dirección al arreglo de movimientos
 y utilice actualizarUltimoMovimiento para mostrarlo en pantalla */
 
-/* Esta función va a chequear si el Rompecabezas esta en la posicion ganadora. 
+/* Esta función va a chequear si el Rompecabezas esta en la posicion ganadora.
 Existen diferentes formas de hacer este chequeo a partir de la grilla. */
 function chequearSiGano() {
     //COMPLETAR
@@ -39,9 +43,9 @@ function mostrarCartelGanador() {
 }
 
 /* Función que intercambia dos posiciones en la grilla.
-Pensar como intercambiar dos posiciones en un arreglo de arreglos. 
+Pensar como intercambiar dos posiciones en un arreglo de arreglos.
 Para que tengas en cuenta:
-Si queremos intercambiar las posiciones [1,2] con la [0, 0], si hacemos: 
+Si queremos intercambiar las posiciones [1,2] con la [0, 0], si hacemos:
 arreglo[1][2] = arreglo[0][0];
 arreglo[0][0] = arreglo[1][2];
 
@@ -178,7 +182,7 @@ function actualizarUltimoMovimiento(direccion) {
 }
 
 /* Esta función permite agregar una instrucción a la lista
-con idLista. Se crea un elemento li dinámicamente con el texto 
+con idLista. Se crea un elemento li dinámicamente con el texto
 pasado con el parámetro "instrucción". */
 function mostrarInstruccionEnLista(instruccion, idLista) {
   var ul = document.getElementById(idLista);
