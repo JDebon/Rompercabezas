@@ -37,12 +37,25 @@ y utilice actualizarUltimoMovimiento para mostrarlo en pantalla */
 /* Esta función va a chequear si el Rompecabezas esta en la posicion ganadora.
 Existen diferentes formas de hacer este chequeo a partir de la grilla. */
 function chequearSiGano() {
-    //COMPLETAR
+  var valorActual = 0;
+  var UltimoValor = 0;
+  for (var fila = 0;fila < grilla.length; fila++) {
+    for (var col = 0; col < grilla.length; col++) {
+      valorActual = grilla[fila][col];
+      if (valorActual < UltimoValor) {
+        return false;
+      }
+      UltimoValor = valorActual;
+    }
+  }
+  return true;
 }
 
 // Implementar alguna forma de mostrar un cartel que avise que ganaste el juego
 function mostrarCartelGanador() {
-    //COMPLETAR
+    if (chequearSiGano) {
+      alert ("Felicitaciones. Ha ganado");
+    }
 }
 
 /* Función que intercambia dos posiciones en la grilla.
