@@ -2,7 +2,10 @@
 var instrucciones = ["Utilize las flechas para mover las piezas", "Iguala las piezas con el modelo para ganar"];
 // Arreglo para ir guardando los movimientos que se vayan realizando
 var movimientos = [];
-
+function agregarMovimiento(direccion) {
+  movimientos.push(direccion);
+  actualizarUltimoMovimiento(direccion);
+}
 // Representación de la grilla. Cada número representa a una pieza.
 // El 9 es la posición vacía
 var grilla = [
