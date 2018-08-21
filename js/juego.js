@@ -1,14 +1,18 @@
 // Arreglo que contiene las intrucciones del juego
 var instrucciones = [
-    'Utilize las flechas para mover las piezas',
+    'Utilize las flechas para mover la pieza vacia',
     'Iguala las piezas con el modelo para ganar'
 ];
 // Arreglo para ir guardando los movimientos que se vayan realizando
 var movimientos = [];
+var movimientosFlechas = [];
 function agregarMovimiento(direccion) {
     movimientos.push(direccion);
     actualizarUltimoMovimiento(direccion);
 }
+
+// Funcion para almacenar las direcciones (En flechas) para mostrar al final del juego
+
 // Representación de la grilla. Cada número representa a una pieza.
 // El 9 es la posición vacía
 var grilla = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
@@ -54,7 +58,7 @@ function chequearSiGano() {
 // Implementar alguna forma de mostrar un cartel que avise que ganaste el juego
 function mostrarCartelGanador() {
     if (chequearSiGano()) {
-        alert('Felicitaciones. Ha ganado');
+        alert('Felicitaciones. Ha ganado. Movimientos realizados: ' + movimientosFlechas);
     }
 }
 
@@ -208,6 +212,11 @@ function actualizarUltimoMovimiento(direccion) {
             ultimoMov.textContent = '←';
             break;
     }
+    // FRAGMENTO AÑADIDO: se agregan las flechas de direccion de los ultimos 20 movimientos al array movimientosFlechas
+    if (movimientosFlechas.length >= 20) {
+        movimientosFlechas.shift();
+    }
+    movimientosFlechas.push(ultimoMov.textContent);
 }
 
 /* Esta función permite agregar una instrucción a la lista
