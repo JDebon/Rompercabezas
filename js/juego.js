@@ -36,20 +36,23 @@ function mostrarInstrucciones(instrucciones) {
 
 // Funcion que resuelve el romepcabezas automaticamente si el usuario presiona el boton "resolver"
 function resolver() {
-    for (var i = movimientos.length - 1; i >= 0; i--) {
-        if (movimientos[i] === codigosDireccion.IZQUIERDA) {
-            moverEnDireccion(codigosDireccion.DERECHA);
-        } else if (movimientos[i] === codigosDireccion.DERECHA) {
-            moverEnDireccion(codigosDireccion.IZQUIERDA);
-        } else if (movimientos[i] === codigosDireccion.ARRIBA) {
-            moverEnDireccion(codigosDireccion.ABAJO);
-        } else if (movimientos[i] === codigosDireccion.ABAJO) {
-            moverEnDireccion(codigosDireccion.ARRIBA);
+    if (chequearSiGano() === false) {
+        for (var i = movimientos.length - 1; i >= 0; i--) {
+            if (movimientos[i] === codigosDireccion.IZQUIERDA) {
+                moverEnDireccion(codigosDireccion.DERECHA);
+            } else if (movimientos[i] === codigosDireccion.DERECHA) {
+                moverEnDireccion(codigosDireccion.IZQUIERDA);
+            } else if (movimientos[i] === codigosDireccion.ARRIBA) {
+                moverEnDireccion(codigosDireccion.ABAJO);
+            } else if (movimientos[i] === codigosDireccion.ABAJO) {
+                moverEnDireccion(codigosDireccion.ARRIBA);
+            }
+            movimientos.pop();
+            movimientosFlechas.pop();
         }
-        movimientos.pop();
-        movimientosFlechas.pop();
+        mostrarCartelGanador();
+        movimientos = [];
     }
-    mostrarCartelGanador()
 }
 /* COMPLETAR: Crear función que agregue la última dirección al arreglo de movimientos
 y utilice actualizarUltimoMovimiento para mostrarlo en pantalla */
@@ -75,7 +78,9 @@ function chequearSiGano() {
 // Implementar alguna forma de mostrar un cartel que avise que ganaste el juego
 function mostrarCartelGanador() {
     if (chequearSiGano()) {
-        alert('Felicitaciones. Ha ganado. Ultimos 20 movimientos realizados: ' + movimientosFlechas);
+        alert(
+            'Felicitaciones. Ha ganado. Ultimos 20 movimientos realizados: ' + movimientosFlechas
+        );
     }
 }
 
