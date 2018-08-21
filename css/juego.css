@@ -76,3 +76,29 @@ li::before {
   width: 100%;
   height: 100%;
 }
+#footer {
+  color: white;
+  background-color: black;
+  text-align: center;
+  margin: 0;
+  padding: 1%;
+}
+button {
+  margin-top: 10%;
+  padding: 10%;
+  width: 100%;
+  text-align: center;
+  color: black;
+  background-color: white;
+  border: 2px solid black;
+  transition-duration: 1s
+}
+button:hover {
+  color: white;
+  background-color: black;
+}
+p, li {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 18px;
+
+}

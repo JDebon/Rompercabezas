@@ -1,7 +1,7 @@
 // Arreglo que contiene las intrucciones del juego
 var instrucciones = [
-    'Utilize las flechas para mover la pieza vacia',
-    'Iguala las piezas con el modelo para ganar'
+    'Utilizá las flechas para mover la pieza vacia',
+    'Igualá las piezas con el modelo para ganar'
 ];
 // Arreglo para ir guardando los movimientos que se vayan realizando
 var movimientos = [];
@@ -34,6 +34,23 @@ function mostrarInstrucciones(instrucciones) {
     }
 }
 
+// Funcion que resuelve el romepcabezas automaticamente si el usuario presiona el boton "resolver"
+function resolver() {
+    for (var i = movimientos.length - 1; i >= 0; i--) {
+        if (movimientos[i] === codigosDireccion.IZQUIERDA) {
+            moverEnDireccion(codigosDireccion.DERECHA);
+        } else if (movimientos[i] === codigosDireccion.DERECHA) {
+            moverEnDireccion(codigosDireccion.IZQUIERDA);
+        } else if (movimientos[i] === codigosDireccion.ARRIBA) {
+            moverEnDireccion(codigosDireccion.ABAJO);
+        } else if (movimientos[i] === codigosDireccion.ABAJO) {
+            moverEnDireccion(codigosDireccion.ARRIBA);
+        }
+        movimientos.pop();
+        movimientosFlechas.pop();
+    }
+    mostrarCartelGanador()
+}
 /* COMPLETAR: Crear función que agregue la última dirección al arreglo de movimientos
 y utilice actualizarUltimoMovimiento para mostrarlo en pantalla */
 
@@ -58,7 +75,7 @@ function chequearSiGano() {
 // Implementar alguna forma de mostrar un cartel que avise que ganaste el juego
 function mostrarCartelGanador() {
     if (chequearSiGano()) {
-        alert('Felicitaciones. Ha ganado. Movimientos realizados: ' + movimientosFlechas);
+        alert('Felicitaciones. Ha ganado. Ultimos 20 movimientos realizados: ' + movimientosFlechas);
     }
 }
 
@@ -164,22 +181,6 @@ var codigosDireccion = {
     DERECHA: 39,
     ABAJO: 40
 };
-function resolver() {
-    for (var i = 0; i <= movimientos.length; i++) {
-        if ((movimientos[i] = codigosDireccion.IZQUIERDA)) {
-            moverEnDireccion(codigosDireccion.DERECHA);
-        }
-        if ((movimientos[i] = codigosDireccion.DERECHA)) {
-            moverEnDireccion(codigosDireccion.IZQUIERDA);
-        }
-        if ((movimientos[i] = codigosDireccion.ARRIBA)) {
-            moverEnDireccion(codigosDireccion.ABAJO);
-        }
-        if ((movimientos[i] = codigosDireccion.ABAJO)) {
-            moverEnDireccion(codigosDireccion.ARRIBA);
-        }
-    }
-}
 /* Funcion que realiza el intercambio logico (en la grilla) y ademas actualiza
 el intercambio en la pantalla (DOM). Para que funcione debera estar implementada
 la funcion intercambiarPosicionesGrilla() */
