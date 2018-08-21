@@ -52,6 +52,7 @@ function resolver() {
         }
         mostrarCartelGanador();
         movimientos = [];
+        movimientosFlechas = [];
     }
 }
 /* COMPLETAR: Crear función que agregue la última dirección al arreglo de movimientos
